@@ -15,3 +15,7 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+
+-keep class com.javayhu.kiss.utils.** { *; }
+-keepclassmembers class com.javayhu.kiss.utils.** { *; }
+-dontwarn com.javayhu.kiss.utils.**

@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.javayhu.kiss.utils.AppUtils;
+import com.javayhu.kiss.utils.Utils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,6 +14,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Utils.init(this);
     }
 
     public void gotoUtils(View view) {
