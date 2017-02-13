@@ -15,14 +15,14 @@ import java.util.Map;
  */
 public class SPUtils {
 
-    private SharedPreferences        sp;
+    private SharedPreferences sp;
     private SharedPreferences.Editor editor;
 
     /**
      * SPUtils构造函数
      * <p>在Application中初始化</p>
      *
-     * @param spName  spName
+     * @param spName spName
      */
     public SPUtils(String spName) {
         sp = Utils.getContext().getSharedPreferences(spName, Context.MODE_PRIVATE);
@@ -36,7 +36,7 @@ public class SPUtils {
      * @param key   键
      * @param value 值
      */
-    public void putString(String key, String value) {
+    public void put(String key, String value) {
         editor.putString(key, value).apply();
     }
 
@@ -67,7 +67,7 @@ public class SPUtils {
      * @param key   键
      * @param value 值
      */
-    public void putInt(String key, int value) {
+    public void put(String key, int value) {
         editor.putInt(key, value).apply();
     }
 
@@ -98,7 +98,7 @@ public class SPUtils {
      * @param key   键
      * @param value 值
      */
-    public void putLong(String key, long value) {
+    public void put(String key, long value) {
         editor.putLong(key, value).apply();
     }
 
@@ -129,7 +129,7 @@ public class SPUtils {
      * @param key   键
      * @param value 值
      */
-    public void putFloat(String key, float value) {
+    public void put(String key, float value) {
         editor.putFloat(key, value).apply();
     }
 
@@ -160,7 +160,7 @@ public class SPUtils {
      * @param key   键
      * @param value 值
      */
-    public void putBoolean(String key, boolean value) {
+    public void put(String key, boolean value) {
         editor.putBoolean(key, value).apply();
     }
 

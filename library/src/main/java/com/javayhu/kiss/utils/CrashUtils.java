@@ -22,17 +22,16 @@ import java.util.Locale;
  *     desc  : 崩溃相关工具类
  * </pre>
  */
-public class CrashUtils
-        implements UncaughtExceptionHandler {
+public class CrashUtils implements UncaughtExceptionHandler {
 
     private volatile static CrashUtils mInstance;
 
     private UncaughtExceptionHandler mHandler;
 
     private boolean mInitialized;
-    private String  crashDir;
-    private String  versionName;
-    private int     versionCode;
+    private String crashDir;
+    private String versionName;
+    private int versionCode;
 
     private CrashUtils() {
     }

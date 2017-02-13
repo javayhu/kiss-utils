@@ -27,8 +27,8 @@ import java.util.Locale;
 public class LocationUtils {
 
     private static OnLocationChangeListener mListener;
-    private static MyLocationListener       myLocationListener;
-    private static LocationManager          mLocationManager;
+    private static MyLocationListener myLocationListener;
+    private static LocationManager mLocationManager;
 
     private LocationUtils() {
         throw new UnsupportedOperationException("u can't instantiate me...");

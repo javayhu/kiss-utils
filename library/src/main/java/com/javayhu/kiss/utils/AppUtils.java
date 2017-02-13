@@ -35,7 +35,7 @@ public class AppUtils {
      * @param packageName 包名
      * @return {@code true}: 已安装<br>{@code false}: 未安装
      */
-    public static boolean isInstallApp(Context context, String packageName) {
+    public static boolean isAppInstalled(Context context, String packageName) {
         return !StringUtils.isSpace(packageName) && IntentUtils.getLaunchAppIntent(packageName) != null;
     }
 
@@ -67,8 +67,8 @@ public class AppUtils {
      * @param filePath    文件路径
      * @param requestCode 请求值
      */
-    public static void installApp(Activity activity, String filePath, int requestCode) {
-        installApp(activity, FileUtils.getFileByPath(filePath), requestCode);
+    public static void installAppForResult(Activity activity, String filePath, int requestCode) {
+        installAppForResult(activity, FileUtils.getFileByPath(filePath), requestCode);
     }
 
     /**
@@ -78,7 +78,7 @@ public class AppUtils {
      * @param file        文件
      * @param requestCode 请求值
      */
-    public static void installApp(Activity activity, File file, int requestCode) {
+    public static void installAppForResult(Activity activity, File file, int requestCode) {
         if (!FileUtils.isFileExists(file)) return;
         activity.startActivityForResult(IntentUtils.getInstallAppIntent(file), requestCode);
     }
@@ -116,7 +116,7 @@ public class AppUtils {
      * @param packageName 包名
      * @param requestCode 请求值
      */
-    public static void uninstallApp(Activity activity, String packageName, int requestCode) {
+    public static void uninstallAppForResult(Activity activity, String packageName, int requestCode) {
         if (StringUtils.isSpace(packageName)) return;
         activity.startActivityForResult(IntentUtils.getUninstallAppIntent(packageName), requestCode);
     }
@@ -136,7 +136,6 @@ public class AppUtils {
         ShellUtils.CommandResult commandResult = ShellUtils.execCmd(command, !isSystemApp(context), true);
         return commandResult.successMsg != null && commandResult.successMsg.toLowerCase().contains("success");
     }
-
 
     /**
      * 判断App是否有root权限
@@ -171,7 +170,7 @@ public class AppUtils {
      * @param packageName 包名
      * @param requestCode 请求值
      */
-    public static void launchApp(Activity activity, String packageName, int requestCode) {
+    public static void launchAppForResult(Activity activity, String packageName, int requestCode) {
         if (StringUtils.isSpace(packageName)) return;
         activity.startActivityForResult(IntentUtils.getLaunchAppIntent(packageName), requestCode);
     }
@@ -501,13 +500,13 @@ public class AppUtils {
      */
     public static class AppInfo {
 
-        private String   name;
+        private String name;
         private Drawable icon;
-        private String   packageName;
-        private String   packagePath;
-        private String   versionName;
-        private int      versionCode;
-        private boolean  isSystem;
+        private String packageName;
+        private String packagePath;
+        private String versionName;
+        private int versionCode;
+        private boolean isSystem;
 
         public Drawable getIcon() {
             return icon;

@@ -2,18 +2,11 @@ package com.javayhu.kiss.utils;
 
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningServiceInfo;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.content.pm.ResolveInfo;
-import android.os.Bundle;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
-import java.util.Hashtable;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 

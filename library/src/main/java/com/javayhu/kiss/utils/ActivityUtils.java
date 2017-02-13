@@ -1,7 +1,6 @@
 package com.javayhu.kiss.utils;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -29,7 +28,7 @@ public class ActivityUtils {
     }
 
     /**
-     * 判断是否存在Activity
+     * 判断是否存在Activity (三个条件都满足才算是存在)
      *
      * @param packageName 包名
      * @param className   activity全路径类名
@@ -78,7 +77,7 @@ public class ActivityUtils {
         List<ResolveInfo> infos = pm.queryIntentActivities(intent, 0);
         for (ResolveInfo info : infos) {
             if (info.activityInfo.packageName.equals(packageName)) {
-                return info.activityInfo.name;
+                return info.activityInfo.name;//packageName + name
             }
         }
         return "no " + packageName;

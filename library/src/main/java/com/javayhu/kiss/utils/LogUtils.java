@@ -25,11 +25,12 @@ public class LogUtils {
         throw new UnsupportedOperationException("u can't instantiate me...");
     }
 
-    private static boolean logSwitch      = true;
+    private static boolean logSwitch = true;
     private static boolean log2FileSwitch = false;
-    private static char    logFilter      = 'v';
-    private static String  tag            = "TAG";
-    private static String  dir            = null;
+    private static char logFilter = 'v';
+    private static String tag = "TAG";
+    private static String dir = null;
+    private static int stackIndex = 0;
 
     /**
      * 初始化函数
@@ -69,10 +70,10 @@ public class LogUtils {
 
     public static class Builder {
 
-        private boolean logSwitch      = true;
+        private boolean logSwitch = true;
         private boolean log2FileSwitch = false;
-        private char    logFilter      = 'v';
-        private String  tag            = "TAG";
+        private char logFilter = 'v';
+        private String tag = "TAG";
 
         public Builder setLogSwitch(boolean logSwitch) {
             this.logSwitch = logSwitch;
@@ -261,15 +262,16 @@ public class LogUtils {
      * @param type 日志类型
      */
     private static void log(String tag, String msg, Throwable tr, char type) {
+        if (msg == null || msg.isEmpty()) return;
         if (logSwitch) {
             if ('e' == type && ('e' == logFilter || 'v' == logFilter)) {
-                Log.e(generateTag(tag), msg, tr);
+                printLog(generateTag(tag), msg, tr, 'e');
             } else if ('w' == type && ('w' == logFilter || 'v' == logFilter)) {
-                Log.w(generateTag(tag), msg, tr);
+                printLog(generateTag(tag), msg, tr, 'w');
             } else if ('d' == type && ('d' == logFilter || 'v' == logFilter)) {
-                Log.d(generateTag(tag), msg, tr);
+                printLog(generateTag(tag), msg, tr, 'd');
             } else if ('i' == type && ('d' == logFilter || 'v' == logFilter)) {
-                Log.i(generateTag(tag), msg, tr);
+                printLog(generateTag(tag), msg, tr, 'i');
             }
             if (log2FileSwitch) {
                 log2File(type, generateTag(tag), msg + '\n' + Log.getStackTraceString(tr));
@@ -278,20 +280,48 @@ public class LogUtils {
     }
 
     /**
+     * 根据tag, msg和等级，输出日志
+     *
+     * @param tag  标签
+     * @param msg  消息
+     * @param tr   异常
+     * @param type 日志类型
+     */
+    private static void printLog(final String tag, final String msg, Throwable tr, char type) {
+        final int maxLen = 4000;
+        for (int i = 0, len = msg.length(); i * maxLen < len; ++i) {
+            String subMsg = msg.substring(i * maxLen, (i + 1) * maxLen < len ? (i + 1) * maxLen : len);
+            switch (type) {
+                case 'e':
+                    Log.e(tag, subMsg, tr);
+                    break;
+                case 'w':
+                    Log.w(tag, subMsg, tr);
+                    break;
+                case 'd':
+                    Log.d(tag, subMsg, tr);
+                    break;
+                case 'i':
+                    Log.i(tag, subMsg, tr);
+                    break;
+            }
+        }
+    }
+
+    /**
      * 打开日志文件并写入日志
      *
-     * @param type    日志类型
-     * @param tag     标签
-     * @param content 内容
+     * @param type 日志类型
+     * @param tag  标签
+     * @param msg  信息
      **/
-    private synchronized static void log2File(final char type, final String tag, final String content) {
-        if (content == null) return;
+    private synchronized static void log2File(final char type, final String tag, final String msg) {
         Date now = new Date();
         String date = new SimpleDateFormat("MM-dd", Locale.getDefault()).format(now);
         final String fullPath = dir + date + ".txt";
         if (!FileUtils.createOrExistsFile(fullPath)) return;
         String time = new SimpleDateFormat("MM-dd HH:mm:ss.SSS", Locale.getDefault()).format(now);
-        final String dateLogContent = time + ":" + type + ":" + tag + ":" + content + '\n';
+        final String dateLogContent = time + ":" + type + ":" + tag + ":" + msg + '\n';
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -315,9 +345,15 @@ public class LogUtils {
      */
     private static String generateTag(String tag) {
         StackTraceElement[] stacks = Thread.currentThread().getStackTrace();
-        StackTraceElement caller = stacks[4];
-        String format = "Tag[" + tag + "] %s[%s, %d]";
+        if (stackIndex == 0) {
+            while (!stacks[stackIndex].getMethodName().equals("generateTag")) {
+                ++stackIndex;
+            }
+            stackIndex += 3;
+        }
+        StackTraceElement caller = stacks[stackIndex];
         String callerClazzName = caller.getClassName();
+        String format = "Tag[" + tag + "] %s[%s, %d]";
         callerClazzName = callerClazzName.substring(callerClazzName.lastIndexOf(".") + 1);
         return String.format(format, callerClazzName, caller.getMethodName(), caller.getLineNumber());
     }

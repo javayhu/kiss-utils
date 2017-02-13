@@ -17,6 +17,7 @@ import static com.javayhu.kiss.utils.ConstUtils.REGEX_URL;
 import static com.javayhu.kiss.utils.ConstUtils.REGEX_USERNAME;
 import static com.javayhu.kiss.utils.ConstUtils.REGEX_ZH;
 
+
 /**
  * <pre>
  *     author: Blankj
