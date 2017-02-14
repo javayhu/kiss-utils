@@ -27,7 +27,7 @@ public class LogUtils {
 
     private static boolean logSwitch = true;
     private static boolean log2FileSwitch = false;
-    private static char logFilter = 'v';
+    private static char logFilter = 'v';//hujiawei 这里最好是用枚举限定可能的值
     private static String tag = "TAG";
     private static String dir = null;
     private static int stackIndex = 0;
@@ -42,15 +42,19 @@ public class LogUtils {
      * @param tag            标签
      */
     public static void init(boolean logSwitch, boolean log2FileSwitch, char logFilter, String tag) {
+        initLogDir();
+        LogUtils.logSwitch = logSwitch;
+        LogUtils.log2FileSwitch = log2FileSwitch;
+        LogUtils.logFilter = logFilter;
+        LogUtils.tag = tag;
+    }
+
+    private static void initLogDir() {
         if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
             dir = Utils.getContext().getExternalCacheDir().getPath() + File.separator;
         } else {
             dir = Utils.getContext().getCacheDir().getPath() + File.separator;
         }
-        LogUtils.logSwitch = logSwitch;
-        LogUtils.log2FileSwitch = log2FileSwitch;
-        LogUtils.logFilter = logFilter;
-        LogUtils.tag = tag;
     }
 
     /**
@@ -60,11 +64,7 @@ public class LogUtils {
      * @return Builder对象
      */
     public static Builder getBuilder() {
-        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
-            dir = Utils.getContext().getExternalCacheDir().getPath() + File.separator + "log" + File.separator;
-        } else {
-            dir = Utils.getContext().getCacheDir().getPath() + File.separator + "log" + File.separator;
-        }
+        initLogDir();
         return new Builder();
     }
 
@@ -85,7 +85,7 @@ public class LogUtils {
             return this;
         }
 
-        public Builder setLogFilter(char logFilter) {
+        public Builder setLogLevel(char logFilter) {
             this.logFilter = logFilter;
             return this;
         }

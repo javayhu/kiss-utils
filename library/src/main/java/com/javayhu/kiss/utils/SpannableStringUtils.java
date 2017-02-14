@@ -109,7 +109,6 @@ public class SpannableStringUtils {
 
         private SpannableStringBuilder mBuilder;
 
-
         private Builder(@NonNull CharSequence text) {
             this.text = text;
             flag = Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;

@@ -46,7 +46,7 @@ public class AppActivity extends Activity
                 + "\nisWeiXinAppDebug: " + AppUtils.isAppDebug(this, "com.tencent.mm")
                 + "\nAppSignatureSHA1: " + AppUtils.getAppSignatureSHA1(this)
                 + "\nisAppForeground: " + AppUtils.isAppForeground(this)
-                + "\nisWeiXinForeground: " + AppUtils.isAppForeground(this, "com.tencent.mm")
+                + "\nisWeiXinForeground: " + AppUtils.isAppForeground("com.tencent.mm")
         );
     }
 

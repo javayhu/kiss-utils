@@ -22,8 +22,8 @@ public class PinyinUtils {
      * @param ccs 汉字字符串(Chinese characters)
      * @return 拼音
      */
-    public static String ccs2Pinyin(CharSequence ccs) {
-        return ccs2Pinyin(ccs, "");
+    public static String hanzi2Pinyin(CharSequence ccs) {
+        return hanzi2Pinyin(ccs, "");
     }
 
     /**
@@ -33,7 +33,7 @@ public class PinyinUtils {
      * @param split 汉字拼音之间的分隔符
      * @return 拼音
      */
-    public static String ccs2Pinyin(CharSequence ccs, CharSequence split) {
+    public static String hanzi2Pinyin(CharSequence ccs, CharSequence split) {
         if (ccs == null || ccs.length() == 0) return null;
         StringBuilder sb = new StringBuilder();
         for (int i = 0, len = ccs.length(); i < len; i++) {
@@ -57,7 +57,7 @@ public class PinyinUtils {
      */
     public static String getPinyinFirstLetter(CharSequence ccs) {
         if (ccs == null || ccs.length() == 0) return null;
-        return ccs2Pinyin(String.valueOf(ccs.charAt(0))).substring(0, 1);
+        return hanzi2Pinyin(String.valueOf(ccs.charAt(0))).substring(0, 1);
     }
 
     /**
@@ -82,7 +82,7 @@ public class PinyinUtils {
         int len = ccs.length();
         StringBuilder sb = new StringBuilder(len);
         for (int i = 0; i < len; i++) {
-            sb.append(ccs2Pinyin(String.valueOf(ccs.charAt(i))).substring(0, 1)).append(split);
+            sb.append(hanzi2Pinyin(String.valueOf(ccs.charAt(i))).substring(0, 1)).append(split);
         }
         return sb.toString();
     }

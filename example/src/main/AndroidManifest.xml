@@ -40,6 +40,9 @@
     <!--process-->
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"/>
 
+    <!--app-->
+    <!--<uses-permission android:name="android.permission.DELETE_PACKAGES" />-->
+
     <application
         android:name=".UtilsApp"
         android:allowBackup="true"

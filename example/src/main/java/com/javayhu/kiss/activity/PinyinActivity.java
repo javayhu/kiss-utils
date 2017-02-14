@@ -28,7 +28,7 @@ public class PinyinActivity extends Activity {
         tvAboutPinyin = (TextView) findViewById(R.id.tv_about_pinyin);
 
         tvAboutPinyin.setText("测试拼音工具类"
-                + "\n转拼音: " + PinyinUtils.ccs2Pinyin("测试拼音工具类", " ")
+                + "\n转拼音: " + PinyinUtils.hanzi2Pinyin("测试拼音工具类", " ")
                 + "\n获取首字母: " + PinyinUtils.getPinyinFirstLetters("测试拼音工具类", " ")
                 + "\n澹台: " + PinyinUtils.getSurnamePinyin("澹台"));
     }

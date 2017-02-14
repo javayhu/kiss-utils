@@ -124,8 +124,7 @@ public class SnackbarUtils {
      * @param actionTextColor 事件文本颜色
      * @param listener        监听器
      */
-    private static void showSnackbar(View parent, CharSequence text,
-                                     int duration,
+    private static void showSnackbar(View parent, CharSequence text, int duration,
                                      @ColorInt int textColor, @ColorInt int bgColor,
                                      CharSequence actionText, int actionTextColor,
                                      View.OnClickListener listener) {
@@ -155,8 +154,7 @@ public class SnackbarUtils {
             Snackbar.SnackbarLayout layout = (Snackbar.SnackbarLayout) view;
             View child = LayoutInflater.from(view.getContext()).inflate(layoutId, null);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT);
+                    LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             params.gravity = Gravity.CENTER_VERTICAL;
             layout.addView(child, index, params);
         }

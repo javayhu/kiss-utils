@@ -27,6 +27,8 @@ import java.util.Set;
  */
 public class ProcessUtils {
 
+    //hujiawei 要不要加点料 https://github.com/jaredrummler/AndroidProcesses
+
     private ProcessUtils() {
         throw new UnsupportedOperationException("u can't instantiate me...");
     }

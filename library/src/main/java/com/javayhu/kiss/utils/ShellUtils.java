@@ -27,7 +27,7 @@ public class ShellUtils {
      * @return CommandResult
      */
     public static CommandResult execCmd(String command, boolean isRoot) {
-        return execCmd(new String[]{command}, isRoot, true);
+        return execCmd(new String[]{command}, isRoot, false);
     }
 
     /**
@@ -38,7 +38,7 @@ public class ShellUtils {
      * @return CommandResult
      */
     public static CommandResult execCmd(List<String> commands, boolean isRoot) {
-        return execCmd(commands == null ? null : commands.toArray(new String[]{}), isRoot, true);
+        return execCmd(commands == null ? null : commands.toArray(new String[]{}), isRoot, false);
     }
 
     /**
@@ -57,7 +57,7 @@ public class ShellUtils {
      *
      * @param command         命令
      * @param isRoot          是否需要root权限执行
-     * @param isNeedResultMsg 是否需要结果消息
+     * @param isNeedResultMsg 是否需要结果消息 (hujiawei 默认不要)
      * @return CommandResult
      */
     public static CommandResult execCmd(String command, boolean isRoot, boolean isNeedResultMsg) {

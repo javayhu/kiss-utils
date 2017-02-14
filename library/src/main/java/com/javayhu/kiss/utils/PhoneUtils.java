@@ -141,7 +141,7 @@ public class PhoneUtils {
      * NetworkOperator = 46003<br>
      * NetworkOperatorName = 中国电信<br>
      * NetworkType = 6<br>
-     * honeType = 2<br>
+     * PhoneType = 2<br>
      * SimCountryIso = cn<br>
      * SimOperator = 46003<br>
      * SimOperatorName = 中国电信<br>
@@ -151,8 +151,7 @@ public class PhoneUtils {
      * VoiceMailNumber = *86<br>
      */
     public static String getPhoneStatus() {
-        TelephonyManager tm = (TelephonyManager) Utils.getContext()
-                .getSystemService(Context.TELEPHONY_SERVICE);
+        TelephonyManager tm = (TelephonyManager) Utils.getContext().getSystemService(Context.TELEPHONY_SERVICE);
         String str = "";
         str += "DeviceId(IMEI) = " + tm.getDeviceId() + "\n";
         str += "DeviceSoftwareVersion = " + tm.getDeviceSoftwareVersion() + "\n";
@@ -161,7 +160,7 @@ public class PhoneUtils {
         str += "NetworkOperator = " + tm.getNetworkOperator() + "\n";
         str += "NetworkOperatorName = " + tm.getNetworkOperatorName() + "\n";
         str += "NetworkType = " + tm.getNetworkType() + "\n";
-        str += "honeType = " + tm.getPhoneType() + "\n";
+        str += "PhoneType = " + tm.getPhoneType() + "\n";
         str += "SimCountryIso = " + tm.getSimCountryIso() + "\n";
         str += "SimOperator = " + tm.getSimOperator() + "\n";
         str += "SimOperatorName = " + tm.getSimOperatorName() + "\n";

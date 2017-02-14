@@ -171,14 +171,14 @@ public class ScreenUtils {
     /**
      * 获取进入休眠时长
      *
-     * @return 进入休眠时长，报错返回-123
+     * @return 进入休眠时长，报错返回-1
      */
     public static int getSleepDuration() {
         try {
             return Settings.System.getInt(Utils.getContext().getContentResolver(), Settings.System.SCREEN_OFF_TIMEOUT);
         } catch (Settings.SettingNotFoundException e) {
             e.printStackTrace();
-            return -123;
+            return -1;
         }
     }
 }

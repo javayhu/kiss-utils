@@ -38,7 +38,7 @@ public class CrashUtils implements UncaughtExceptionHandler {
 
     /**
      * 获取单例
-     * <p>在Application中初始化{@code CrashUtils.getInstance().init(this);}</p>
+     * <p>在Application中初始化{@code CrashUtils.getInstance().init();}</p>
      * <p>需添加权限 {@code <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>}</p>
      *
      * @return 单例
@@ -64,11 +64,11 @@ public class CrashUtils implements UncaughtExceptionHandler {
         if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
             File baseCache = Utils.getContext().getExternalCacheDir();
             if (baseCache == null) return false;
-            crashDir = baseCache.getPath() + File.separator + "crash" + File.separator;
+            crashDir = baseCache.getPath() + File.separator + "crash";
         } else {
             File baseCache = Utils.getContext().getCacheDir();
             if (baseCache == null) return false;
-            crashDir = baseCache.getPath() + File.separator + "crash" + File.separator;
+            crashDir = baseCache.getPath() + File.separator + "crash";
         }
         try {
             PackageInfo pi = Utils.getContext().getPackageManager().getPackageInfo(Utils.getContext().getPackageName(), 0);
@@ -86,7 +86,7 @@ public class CrashUtils implements UncaughtExceptionHandler {
     @Override
     public void uncaughtException(Thread thread, final Throwable throwable) {
         String now = new SimpleDateFormat("yy-MM-dd HH:mm:ss", Locale.getDefault()).format(new Date());
-        final String fullPath = crashDir + now + ".txt";
+        final String fullPath = crashDir + File.separator + now + ".txt";
         if (!FileUtils.createOrExistsFile(fullPath)) return;
         new Thread(new Runnable() {
             @Override
@@ -108,6 +108,7 @@ public class CrashUtils implements UncaughtExceptionHandler {
                 }
             }
         }).start();
+
         if (mHandler != null) {
             mHandler.uncaughtException(thread, throwable);
         }

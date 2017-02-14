@@ -99,7 +99,7 @@ public class AppUtils {
     }
 
     /**
-     * 卸载App
+     * 卸载App (会弹框询问是否卸载)
      *
      * @param context     上下文
      * @param packageName 包名
@@ -122,7 +122,7 @@ public class AppUtils {
     }
 
     /**
-     * 静默卸载App
+     * 静默卸载App (hujiawei 即使加上下面的权限也还是Permission denied，没能卸载)
      * <p>非root需添加权限 {@code <uses-permission android:name="android.permission.DELETE_PACKAGES" />}</p>
      *
      * @param context     上下文
@@ -491,7 +491,7 @@ public class AppUtils {
      * @param packageName 包名
      * @return {@code true}: 是<br>{@code false}: 否
      */
-    public static boolean isAppForeground(Context context, String packageName) {
+    public static boolean isAppForeground(String packageName) {
         return !StringUtils.isSpace(packageName) && packageName.equals(ProcessUtils.getForegroundProcessName());
     }
 

@@ -728,8 +728,7 @@ public class ImageUtils {
         try {
             rs = RenderScript.create(context);
             rs.setMessageHandler(new RenderScript.RSMessageHandler());
-            Allocation input = Allocation.createFromBitmap(rs, src, Allocation.MipmapControl.MIPMAP_NONE, Allocation
-                    .USAGE_SCRIPT);
+            Allocation input = Allocation.createFromBitmap(rs, src, Allocation.MipmapControl.MIPMAP_NONE, Allocation.USAGE_SCRIPT);
             Allocation output = Allocation.createTyped(rs, input.getType());
             ScriptIntrinsicBlur blurScript = ScriptIntrinsicBlur.create(rs, Element.U8_4(rs));
             blurScript.setInput(input);
@@ -1054,8 +1053,7 @@ public class ImageUtils {
      * @param y        起始坐标y
      * @return 带有文字水印的图片
      */
-    public static Bitmap addTextWatermark(Bitmap src, String content, int textSize, int color, float x,
-                                          float y) {
+    public static Bitmap addTextWatermark(Bitmap src, String content, int textSize, int color, float x, float y) {
         return addTextWatermark(src, content, textSize, color, x, y, false);
     }
 

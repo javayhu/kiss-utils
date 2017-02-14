@@ -30,7 +30,7 @@ public class ActivityActivity extends Activity
         setContentView(R.layout.activity_activity);
 
         packageName = this.getPackageName();
-        className = packageName + ".activities.ImageActivity";
+        className = "com.javayhu.kiss.activity.ImageActivity";
 
         TextView tvAboutActivity = (TextView) findViewById(R.id.tv_about_activity);
 

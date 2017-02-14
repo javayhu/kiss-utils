@@ -2,7 +2,6 @@ package com.javayhu.kiss.utils;
 
 import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -45,8 +44,8 @@ public class KeyboardUtils {
      * <p>需重写dispatchTouchEvent</p>
      * <p>参照以下注释代码</p>
      */
-    public static void clickBlankArea2HideSoftInput() {
-        Log.d("tips", "U should copy the following code.");
+    //public static void clickBlankArea2HideSoftInput() {
+    //    Log.d("tips", "U should copy the following code.");
         /*
         @Override
         public boolean dispatchTouchEvent(MotionEvent ev) {
@@ -65,17 +64,14 @@ public class KeyboardUtils {
             if (v != null && (v instanceof EditText)) {
                 int[] l = {0, 0};
                 v.getLocationInWindow(l);
-                int left = l[0],
-                        top = l[1],
-                        bottom = top + v.getHeight(),
-                        right = left + v.getWidth();
+                int left = l[0], top = l[1], bottom = top + v.getHeight(), right = left + v.getWidth();
                 return !(event.getX() > left && event.getX() < right
                         && event.getY() > top && event.getY() < bottom);
             }
             return false;
         }
         */
-    }
+    //}
 
     /**
      * 动态显示软键盘
@@ -86,8 +82,7 @@ public class KeyboardUtils {
         edit.setFocusable(true);
         edit.setFocusableInTouchMode(true);
         edit.requestFocus();
-        InputMethodManager imm = (InputMethodManager) Utils.getContext()
-                .getSystemService(Context.INPUT_METHOD_SERVICE);
+        InputMethodManager imm = (InputMethodManager) Utils.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.showSoftInput(edit, 0);
     }
 
@@ -95,8 +90,7 @@ public class KeyboardUtils {
      * 切换键盘显示与否状态
      */
     public static void toggleSoftInput() {
-        InputMethodManager imm = (InputMethodManager) Utils.getContext()
-                .getSystemService(Context.INPUT_METHOD_SERVICE);
+        InputMethodManager imm = (InputMethodManager) Utils.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
     }
 }

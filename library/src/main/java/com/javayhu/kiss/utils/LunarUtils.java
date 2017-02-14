@@ -57,7 +57,7 @@ public class LunarUtils {
             0x106a3d, 0x106c51, 0x106e47, 0x10703c, 0x10724f, 0x107444, 0x107638, 0x10784c, 0x107a3f, 0x107c53,
             0x107e48};
 
-    private static int GetBitInt(int data, int length, int shift) {
+    private static int getBitInt(int data, int length, int shift) {
         return (data & (((1 << length) - 1) << shift)) >> shift;
     }
 
@@ -69,7 +69,7 @@ public class LunarUtils {
      * @param d 日
      * @return 阳历
      */
-    private static long SolarToInt(int y, int m, int d) {
+    private static long solarToInt(int y, int m, int d) {
         m = (m + 9) % 12;
         y = y - m / 10;
         return 365 * y + y / 4 - y / 100 + y / 400 + (m * 306 + 5) / 10 + (d - 1);
@@ -86,7 +86,7 @@ public class LunarUtils {
         return tianGan[(lunarYear - 4) % 10] + diZhi[(lunarYear - 4) % 12] + "年";
     }
 
-    private static Solar SolarFromInt(long g) {
+    private static Solar solarFromInt(long g) {
         long y = (10000 * g + 14780) / 3652425;
         long ddd = g - (365 * y + y / 4 - y / 100 + y / 400);
         if (ddd < 0) {
@@ -110,9 +110,9 @@ public class LunarUtils {
      * @param lunar 农历
      * @return 阴历
      */
-    public static Solar LunarToSolar(Lunar lunar) {
+    public static Solar lunarToSolar(Lunar lunar) {
         int days = lunar_month_days[lunar.lunarYear - lunar_month_days[0]];
-        int leap = GetBitInt(days, 4, 13);
+        int leap = getBitInt(days, 4, 13);
         int offset = 0;
         int loopend = leap;
         if (!lunar.isLeap) {
@@ -123,17 +123,17 @@ public class LunarUtils {
             }
         }
         for (int i = 0; i < loopend; i++) {
-            offset += GetBitInt(days, 1, 12 - i) == 1 ? 30 : 29;
+            offset += getBitInt(days, 1, 12 - i) == 1 ? 30 : 29;
         }
         offset += lunar.lunarDay;
 
         int solar11 = solar_1_1[lunar.lunarYear - solar_1_1[0]];
 
-        int y = GetBitInt(solar11, 12, 9);
-        int m = GetBitInt(solar11, 4, 5);
-        int d = GetBitInt(solar11, 5, 0);
+        int y = getBitInt(solar11, 12, 9);
+        int m = getBitInt(solar11, 4, 5);
+        int d = getBitInt(solar11, 5, 0);
 
-        return SolarFromInt(SolarToInt(y, m, d) + offset - 1);
+        return solarFromInt(solarToInt(y, m, d) + offset - 1);
     }
 
     /**
@@ -142,7 +142,7 @@ public class LunarUtils {
      * @param solar 公历
      * @return 阴历
      */
-    public static Lunar SolarToLunar(Solar solar) {
+    public static Lunar solarToLunar(Solar solar) {
         Lunar lunar = new Lunar();
         int index = solar.solarYear - solar_1_1[0];
         int data = (solar.solarYear << 9) | (solar.solarMonth << 5) | (solar.solarDay);
@@ -151,13 +151,13 @@ public class LunarUtils {
             index--;
         }
         solar11 = solar_1_1[index];
-        int y = GetBitInt(solar11, 12, 9);
-        int m = GetBitInt(solar11, 4, 5);
-        int d = GetBitInt(solar11, 5, 0);
-        long offset = SolarToInt(solar.solarYear, solar.solarMonth, solar.solarDay) - SolarToInt(y, m, d);
+        int y = getBitInt(solar11, 12, 9);
+        int m = getBitInt(solar11, 4, 5);
+        int d = getBitInt(solar11, 5, 0);
+        long offset = solarToInt(solar.solarYear, solar.solarMonth, solar.solarDay) - solarToInt(y, m, d);
 
         int days = lunar_month_days[index];
-        int leap = GetBitInt(days, 4, 13);
+        int leap = getBitInt(days, 4, 13);
 
         int lunarY = index + solar_1_1[0];
         int lunarM = 1;
@@ -165,7 +165,7 @@ public class LunarUtils {
         offset += 1;
 
         for (int i = 0; i < 13; i++) {
-            int dm = GetBitInt(days, 1, 12 - i) == 1 ? 30 : 29;
+            int dm = getBitInt(days, 1, 12 - i) == 1 ? 30 : 29;
             if (offset > dm) {
                 lunarM++;
                 offset -= dm;
@@ -188,14 +188,14 @@ public class LunarUtils {
         return lunar;
     }
 
-    public static class Lunar {
-        public boolean isLeap;
+    public static class Lunar {//阴历
+        public boolean isLeap;//是否闰年
         public int lunarDay;
         public int lunarMonth;
         public int lunarYear;
     }
 
-    public static class Solar {
+    public static class Solar {//阳历
         public int solarDay;
         public int solarMonth;
         public int solarYear;

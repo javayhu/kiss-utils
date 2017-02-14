@@ -95,8 +95,7 @@ public class FileUtils {
         if (newName.equals(file.getName())) return true;
         File newFile = new File(file.getParent() + File.separator + newName);
         // 如果重命名的文件已存在返回false
-        return !newFile.exists()
-                && file.renameTo(newFile);
+        return !newFile.exists() && file.renameTo(newFile);
     }
 
     /**
@@ -831,8 +830,7 @@ public class FileUtils {
      * @param charsetName 编码格式
      * @return 包含制定行的list
      */
-    public static List<String> readFile2List(String filePath, int st, int end, String
-            charsetName) {
+    public static List<String> readFile2List(String filePath, int st, int end, String charsetName) {
         return readFile2List(getFileByPath(filePath), st, end, charsetName);
     }
 

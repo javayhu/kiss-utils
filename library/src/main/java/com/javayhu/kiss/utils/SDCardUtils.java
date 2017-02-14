@@ -40,7 +40,7 @@ public class SDCardUtils {
      * @return SD卡路径
      */
     public static String getSDCardPath() {
-        if (!isSDCardEnable()) return "sdcard unable!";
+        if (!isSDCardEnable()) return null;//"sdcard unable!"
         String cmd = "cat /proc/mounts";
         Runtime run = Runtime.getRuntime();
         BufferedReader bufferedReader = null;
@@ -73,7 +73,7 @@ public class SDCardUtils {
      * @return SD卡data路径
      */
     public static String getDataPath() {
-        if (!isSDCardEnable()) return "sdcard unable!";
+        if (!isSDCardEnable()) return null;//"sdcard unable!"
         return Environment.getExternalStorageDirectory().getPath() + File.separator + "data" + File.separator;
     }
 
@@ -84,7 +84,7 @@ public class SDCardUtils {
      */
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
     public static String getFreeSpace() {
-        if (!isSDCardEnable()) return "sdcard unable!";
+        if (!isSDCardEnable()) return null;//"sdcard unable!"
         StatFs stat = new StatFs(getSDCardPath());
         long blockSize, availableBlocks;
         availableBlocks = stat.getAvailableBlocksLong();
@@ -100,7 +100,7 @@ public class SDCardUtils {
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
     public static String getSDCardInfo() {
         SDCardInfo sd = new SDCardInfo();
-        if (!isSDCardEnable()) return "sdcard unable!";
+        if (!isSDCardEnable()) return null;//"sdcard unable!"
         sd.isExist = true;
         StatFs sf = new StatFs(Environment.getExternalStorageDirectory().getPath());
         sd.totalBlocks = sf.getBlockCountLong();

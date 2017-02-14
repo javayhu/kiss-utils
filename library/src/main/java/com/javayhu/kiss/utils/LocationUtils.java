@@ -78,6 +78,7 @@ public class LocationUtils {
      * @param listener    位置刷新的回调接口
      * @return {@code true}: 初始化成功<br>{@code false}: 初始化失败
      */
+    @SuppressWarnings("MissingPermission")
     public static boolean register(long minTime, long minDistance, OnLocationChangeListener listener) {
         if (listener == null) return false;
         mLocationManager = (LocationManager) Utils.getContext().getSystemService(Context.LOCATION_SERVICE);
@@ -98,6 +99,7 @@ public class LocationUtils {
     /**
      * 注销
      */
+    @SuppressWarnings("MissingPermission")
     public static void unregister() {
         if (mLocationManager != null) {
             if (myLocationListener != null) {
@@ -184,8 +186,7 @@ public class LocationUtils {
         return address == null ? "unknown" : address.getAddressLine(0);
     }
 
-    private static class MyLocationListener
-            implements LocationListener {
+    private static class MyLocationListener implements LocationListener {
         /**
          * 当坐标改变时触发此函数，如果Provider传进相同的坐标，它就不会被触发
          *

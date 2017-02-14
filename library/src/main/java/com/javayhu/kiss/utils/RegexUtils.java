@@ -42,7 +42,7 @@ public class RegexUtils {
      * @param input 待验证文本
      * @return {@code true}: 匹配<br>{@code false}: 不匹配
      */
-    public static boolean isMobileSimple(CharSequence input) {
+    public static boolean isMobileNumberSimple(CharSequence input) {
         return isMatch(REGEX_MOBILE_SIMPLE, input);
     }
 
@@ -52,7 +52,7 @@ public class RegexUtils {
      * @param input 待验证文本
      * @return {@code true}: 匹配<br>{@code false}: 不匹配
      */
-    public static boolean isMobileExact(CharSequence input) {
+    public static boolean isMobileNumberExact(CharSequence input) {
         return isMatch(REGEX_MOBILE_EXACT, input);
     }
 
@@ -62,7 +62,7 @@ public class RegexUtils {
      * @param input 待验证文本
      * @return {@code true}: 匹配<br>{@code false}: 不匹配
      */
-    public static boolean isTel(CharSequence input) {
+    public static boolean isTelNumber(CharSequence input) {
         return isMatch(REGEX_TEL, input);
     }
 
@@ -112,7 +112,7 @@ public class RegexUtils {
      * @param input 待验证文本
      * @return {@code true}: 匹配<br>{@code false}: 不匹配
      */
-    public static boolean isZh(CharSequence input) {
+    public static boolean isHanZi(CharSequence input) {
         return isMatch(REGEX_ZH, input);
     }
 
