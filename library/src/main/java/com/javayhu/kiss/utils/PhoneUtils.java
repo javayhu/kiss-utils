@@ -10,7 +10,6 @@ import android.net.Uri;
 import android.os.SystemClock;
 import android.telephony.SmsManager;
 import android.telephony.TelephonyManager;
-import android.util.Log;
 import android.util.Xml;
 
 import org.xmlpull.v1.XmlSerializer;
@@ -256,8 +255,7 @@ public class PhoneUtils {
                     // selectionArgs :查询条件的参数
                     // sortOrder : 排序
                     // 空指针: 1.null.方法 2.参数为null
-                    Cursor c = resolver.query(date_uri, new String[]{"data1",
-                                    "mimetype"}, "raw_contact_id=?",
+                    Cursor c = resolver.query(date_uri, new String[]{"data1", "mimetype"}, "raw_contact_id=?",
                             new String[]{contact_id}, null);
                     HashMap<String, String> map = new HashMap<String, String>();
                     // 8.解析c
@@ -291,9 +289,8 @@ public class PhoneUtils {
      * 打开手机联系人界面点击联系人后便获取该号码
      * <p>参照以下注释代码</p>
      */
-    public static void getContactNum() {
+    /*public static void getContactNum() {
         Log.d("tips", "U should copy the following code.");
-        /*
         Intent intent = new Intent();
         intent.setAction("android.intent.action.PICK");
         intent.setType("vnd.android.cursor.dir/phone_v2");
@@ -316,8 +313,7 @@ public class PhoneUtils {
                 num = num.replaceAll("-", "");//替换的操作,555-6 -> 5556
             }
         }
-        */
-    }
+    }*/
 
     /**
      * 获取手机短信并保存到xml中

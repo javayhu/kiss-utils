@@ -1149,8 +1149,6 @@ public class TimeUtils {
      * @return 星座
      */
     public static String getZodiac(int month, int day) {
-        return ZODIAC[day >= ZODIAC_FLAGS[month - 1]
-                ? month - 1
-                : (month + 10) % 12];
+        return ZODIAC[day >= ZODIAC_FLAGS[month - 1] ? month - 1 : (month + 10) % 12];
     }
 }

@@ -139,10 +139,7 @@ public class SizeUtils {
     public static int[] measureView(View view) {
         ViewGroup.LayoutParams lp = view.getLayoutParams();
         if (lp == null) {
-            lp = new ViewGroup.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT
-            );
+            lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         }
         int widthSpec = ViewGroup.getChildMeasureSpec(0, 0, lp.width);
         int lpHeight = lp.height;

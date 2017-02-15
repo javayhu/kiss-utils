@@ -54,7 +54,7 @@ public class ProcessUtils {
             PackageManager packageManager = Utils.getContext().getPackageManager();
             Intent intent = new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS);
             List<ResolveInfo> list = packageManager.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
-            System.out.println(list);
+            //System.out.println(list);
             if (list.size() > 0) {// 有"有权查看使用权限的应用"选项
                 try {
                     ApplicationInfo info = packageManager.getApplicationInfo(Utils.getContext().getPackageName(), 0);
@@ -71,7 +71,7 @@ public class ProcessUtils {
                     long beginTime = endTime - 86400000 * 7;
                     List<UsageStats> usageStatses = usageStatsManager.queryUsageStats(UsageStatsManager.INTERVAL_BEST, beginTime, endTime);
                     if (usageStatses == null || usageStatses.isEmpty()) return null;
-                    UsageStats recentStats = null;
+                    UsageStats recentStats = null;//最近使用最多的应用作为前台应用
                     for (UsageStats usageStats : usageStatses) {
                         if (recentStats == null || usageStats.getLastTimeUsed() > recentStats.getLastTimeUsed()) {
                             recentStats = usageStats;

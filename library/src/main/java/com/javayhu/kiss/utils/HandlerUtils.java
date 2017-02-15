@@ -46,3 +46,8 @@ public class HandlerUtils {
         void handlerMessage(Message msg);
     }
 }
+
+//hujiawei usage
+//activity去实现OnReceiveMessageListener接口
+//再定义变量HandlerHolder变量，将activity自己传入进来
+//发送message使用HandlerHolder变量，最终将由activity实现的handlerMessage方法来处理消息

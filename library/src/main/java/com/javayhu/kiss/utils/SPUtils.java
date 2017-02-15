@@ -18,6 +18,8 @@ public class SPUtils {
     private SharedPreferences sp;
     private SharedPreferences.Editor editor;
 
+    //todo hujiawei 提供commit方法调用
+
     /**
      * SPUtils构造函数
      * <p>在Application中初始化</p>
@@ -27,7 +29,7 @@ public class SPUtils {
     public SPUtils(String spName) {
         sp = Utils.getContext().getSharedPreferences(spName, Context.MODE_PRIVATE);
         editor = sp.edit();
-        editor.apply();
+        editor.apply();//hujiawei 为啥要apply一次?
     }
 
     /**

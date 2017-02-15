@@ -178,7 +178,7 @@ public class ZipUtils {
         rootPath = rootPath + (StringUtils.isSpace(rootPath) ? "" : File.separator) + resFile.getName();
         if (resFile.isDirectory()) {
             File[] fileList = resFile.listFiles();
-            // 如果是空文件夹那么创建它，我把'/'换为File.separator测试就不成功，eggPain
+            // 如果是空文件夹那么创建它，我把'/'换为File.separator测试就不成功，eggPain <---
             if (fileList == null || fileList.length <= 0) {
                 ZipEntry entry = new ZipEntry(rootPath + '/');
                 if (!StringUtils.isEmpty(comment)) entry.setComment(comment);
@@ -345,8 +345,7 @@ public class ZipUtils {
      * @return 压缩文件中的文件路径链表
      * @throws IOException IO错误时抛出
      */
-    public static List<String> getFilesPath(File zipFile)
-            throws IOException {
+    public static List<String> getFilesPath(File zipFile) throws IOException {
         if (zipFile == null) return null;
         List<String> paths = new ArrayList<>();
         Enumeration<?> entries = getEntries(zipFile);
@@ -363,8 +362,7 @@ public class ZipUtils {
      * @return 压缩文件中的注释链表
      * @throws IOException IO错误时抛出
      */
-    public static List<String> getComments(String zipFilePath)
-            throws IOException {
+    public static List<String> getComments(String zipFilePath) throws IOException {
         return getComments(FileUtils.getFileByPath(zipFilePath));
     }
 
@@ -375,8 +373,7 @@ public class ZipUtils {
      * @return 压缩文件中的注释链表
      * @throws IOException IO错误时抛出
      */
-    public static List<String> getComments(File zipFile)
-            throws IOException {
+    public static List<String> getComments(File zipFile) throws IOException {
         if (zipFile == null) return null;
         List<String> comments = new ArrayList<>();
         Enumeration<?> entries = getEntries(zipFile);
@@ -394,8 +391,7 @@ public class ZipUtils {
      * @return 压缩文件中的文件对象
      * @throws IOException IO错误时抛出
      */
-    public static Enumeration<?> getEntries(String zipFilePath)
-            throws IOException {
+    public static Enumeration<?> getEntries(String zipFilePath) throws IOException {
         return getEntries(FileUtils.getFileByPath(zipFilePath));
     }
 
@@ -406,8 +402,7 @@ public class ZipUtils {
      * @return 压缩文件中的文件对象
      * @throws IOException IO错误时抛出
      */
-    public static Enumeration<?> getEntries(File zipFile)
-            throws IOException {
+    public static Enumeration<?> getEntries(File zipFile) throws IOException {
         if (zipFile == null) return null;
         return new ZipFile(zipFile).entries();
     }
