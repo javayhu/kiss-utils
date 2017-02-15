@@ -6,12 +6,12 @@ import android.os.Message;
 import java.lang.ref.WeakReference;
 
 /**
- * <pre>
- *     author: Blankj
- *     blog  : http://blankj.com
- *     time  : 16/11/01
- *     desc  : Handler相关工具类
- * </pre>
+ *
+ * author: Blankj & Javayhu
+ * original: https://github.com/Blankj/AndroidUtilCode
+ * time  : 16/11/01
+ * desc  : Handler相关工具类
+ *
  */
 public class HandlerUtils {
 

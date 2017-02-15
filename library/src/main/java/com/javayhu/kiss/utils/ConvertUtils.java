@@ -18,12 +18,12 @@ import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 
 /**
- * <pre>
- *     author: Blankj
- *     blog  : http://blankj.com
- *     time  : 2016/8/13
- *     desc  : 转换相关工具类
- * </pre>
+ *
+ * author: Blankj & Javayhu
+ * original: https://github.com/Blankj/AndroidUtilCode
+ * time  : 2016/8/13
+ * desc  : 转换相关工具类
+ *
  */
 public class ConvertUtils {
 

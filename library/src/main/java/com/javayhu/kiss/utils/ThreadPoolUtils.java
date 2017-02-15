@@ -13,12 +13,12 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 /**
- * <pre>
- *     author: Blankj
- *     blog  : http://blankj.com
- *     time  : 2016/8/25
- *     desc  : 线程池相关工具类
- * </pre>
+ *
+ * author: Blankj & Javayhu
+ * original: https://github.com/Blankj/AndroidUtilCode
+ * time  : 2016/8/25
+ * desc  : 线程池相关工具类
+ *
  */
 public class ThreadPoolUtils {
 

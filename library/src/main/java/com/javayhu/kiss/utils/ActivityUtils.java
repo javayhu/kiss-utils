@@ -14,12 +14,12 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * <pre>
- *     author: Blankj
- *     blog  : http://blankj.com
- *     time  : 2016/9/23
- *     desc  : Activity相关工具类
- * </pre>
+ *
+ * author: Blankj & Javayhu
+ * original: https://github.com/Blankj/AndroidUtilCode
+ * time  : 2016/9/23
+ * desc  : Activity相关工具类
+ *
  */
 public class ActivityUtils {
 

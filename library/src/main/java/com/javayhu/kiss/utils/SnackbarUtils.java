@@ -10,12 +10,12 @@ import android.widget.LinearLayout;
 import java.lang.ref.WeakReference;
 
 /**
- * <pre>
- *     author: Blankj
- *     blog  : http://blankj.com
- *     time  : 2016/10/16
- *     desc  : Snackbar相关工具类
- * </pre>
+ *
+ * author: Blankj & Javayhu
+ * original: https://github.com/Blankj/AndroidUtilCode
+ * time  : 2016/10/16
+ * desc  : Snackbar相关工具类
+ *
  */
 public class SnackbarUtils {
 
@@ -24,6 +24,32 @@ public class SnackbarUtils {
     }
 
     private static WeakReference<Snackbar> snackbarWeakReference;
+
+    public static void showShortSnackbar(View rootView, CharSequence text) {
+        if (null != rootView) {
+            showSnackbar(rootView, text, Snackbar.LENGTH_SHORT);
+        }
+    }
+
+    public static void showLongSnackbar(View rootView, CharSequence text) {
+        if (null != rootView) {
+            showSnackbar(rootView, text, Snackbar.LENGTH_LONG);
+        }
+    }
+
+    /**
+     * 设置snackbar (简易版)
+     *
+     * @param parent          父视图(CoordinatorLayout或者DecorView)
+     * @param text            文本
+     * @param duration        显示时长
+     */
+    private static void showSnackbar(View parent, CharSequence text, int duration) {
+        if (parent==null) return;
+        snackbarWeakReference = new WeakReference<>(Snackbar.make(parent, text, duration));
+        Snackbar snackbar = snackbarWeakReference.get();
+        snackbar.show();
+    }
 
     /**
      * 显示短时snackbar
@@ -124,10 +150,9 @@ public class SnackbarUtils {
      * @param actionTextColor 事件文本颜色
      * @param listener        监听器
      */
-    private static void showSnackbar(View parent, CharSequence text, int duration,
-                                     @ColorInt int textColor, @ColorInt int bgColor,
-                                     CharSequence actionText, int actionTextColor,
-                                     View.OnClickListener listener) {
+    private static void showSnackbar(View parent, CharSequence text, int duration, @ColorInt int textColor, @ColorInt int bgColor,
+                                     CharSequence actionText, int actionTextColor, View.OnClickListener listener) {
+        if (parent==null) return;
         snackbarWeakReference = new WeakReference<>(Snackbar.make(parent, text, duration));
         Snackbar snackbar = snackbarWeakReference.get();
         View view = snackbar.getView();

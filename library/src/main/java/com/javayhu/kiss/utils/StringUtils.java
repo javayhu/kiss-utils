@@ -1,12 +1,12 @@
 package com.javayhu.kiss.utils;
 
 /**
- * <pre>
- *     author: Blankj
- *     blog  : http://blankj.com
- *     time  : 2016/8/16
- *     desc  : 字符串相关工具类
- * </pre>
+ *
+ * author: Blankj & Javayhu
+ * original: https://github.com/Blankj/AndroidUtilCode
+ * time  : 2016/8/16
+ * desc  : 字符串相关工具类
+ *
  */
 public class StringUtils {
 

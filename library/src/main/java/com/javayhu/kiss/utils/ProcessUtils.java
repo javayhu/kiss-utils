@@ -18,12 +18,12 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * <pre>
- *     author: Blankj
- *     blog  : http://blankj.com
- *     time  : 2016/10/18
- *     desc  : 进程相关工具类
- * </pre>
+ *
+ * author: Blankj & Javayhu
+ * original: https://github.com/Blankj/AndroidUtilCode
+ * time  : 2016/10/18
+ * desc  : 进程相关工具类
+ *
  */
 public class ProcessUtils {
 

@@ -4,12 +4,12 @@ import android.content.Context;
 import android.os.Vibrator;
 
 /**
- * <pre>
- *     author: Blankj
- *     blog  : http://blankj.com
- *     time  : 2016/9/29
- *     desc  : 震动相关工具类
- * </pre>
+ *
+ * author: Blankj & Javayhu
+ * original: https://github.com/Blankj/AndroidUtilCode
+ * time  : 2016/9/29
+ * desc  : 震动相关工具类
+ *
  */
 public class VibrationUtils {
 

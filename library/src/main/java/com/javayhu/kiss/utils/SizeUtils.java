@@ -6,12 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * <pre>
- *     author: Blankj
- *     blog  : http://blankj.com
- *     time  : 2016/8/2
- *     desc  : 尺寸相关工具类
- * </pre>
+ *
+ * author: Blankj & Javayhu
+ * original: https://github.com/Blankj/AndroidUtilCode
+ * time  : 2016/8/2
+ * desc  : 尺寸相关工具类
+ *
  */
 public class SizeUtils {
 

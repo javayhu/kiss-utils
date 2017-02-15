@@ -7,12 +7,12 @@ import android.content.Intent;
 import android.net.Uri;
 
 /**
- * <pre>
- *     author: Blankj
- *     blog  : http://blankj.com
- *     time  : 2016/9/25
- *     desc  : 剪贴板相关工具类
- * </pre>
+ *
+ * author: Blankj & Javayhu
+ * original: https://github.com/Blankj/AndroidUtilCode
+ * time  : 2016/9/25
+ * desc  : 剪贴板相关工具类
+ *
  */
 public class ClipboardUtils {
 

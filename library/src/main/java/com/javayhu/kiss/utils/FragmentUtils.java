@@ -16,12 +16,12 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * <pre>
- *     author: Blankj
- *     blog  : http://blankj.com
- *     time  : 2017/1/17
- *     desc  : Fragment相关工具类
- * </pre>
+ *
+ * author: Blankj & Javayhu
+ * original: https://github.com/Blankj/AndroidUtilCode
+ * time  : 2017/1/17
+ * desc  : Fragment相关工具类
+ *
  */
 public class FragmentUtils {
 

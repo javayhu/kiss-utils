@@ -18,12 +18,12 @@ import static com.javayhu.kiss.utils.ConvertUtils.hexString2Bytes;
 
 
 /**
- * <pre>
- *     author: Blankj
- *     blog  : http://blankj.com
- *     time  : 2016/8/2
- *     desc  : 加密解密相关的工具类
- * </pre>
+ *
+ * author: Blankj & Javayhu
+ * original: https://github.com/Blankj/AndroidUtilCode
+ * time  : 2016/8/2
+ * desc  : 加密解密相关的工具类
+ *
  */
 public class EncryptUtils {
 

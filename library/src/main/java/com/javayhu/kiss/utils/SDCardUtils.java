@@ -11,12 +11,12 @@ import java.io.File;
 import java.io.InputStreamReader;
 
 /**
- * <pre>
- *     author: Blankj
- *     blog  : http://blankj.com
- *     time  : 2016/8/11
- *     desc  : SD卡相关工具类
- * </pre>
+ *
+ * author: Blankj & Javayhu
+ * original: https://github.com/Blankj/AndroidUtilCode
+ * time  : 2016/8/11
+ * desc  : SD卡相关工具类
+ *
  */
 public class SDCardUtils {
 

@@ -34,12 +34,12 @@ import android.text.style.UnderlineSpan;
 import static android.graphics.BlurMaskFilter.Blur;
 
 /**
- * <pre>
- *     author: Blankj
- *     blog  : http://blankj.com
- *     time  : 16/12/13
- *     desc  : SpannableString相关工具类
- * </pre>
+ *
+ * author: Blankj & Javayhu
+ * original: https://github.com/Blankj/AndroidUtilCode
+ * time  : 16/12/13
+ * desc  : SpannableString相关工具类
+ *
  */
 public class SpannableStringUtils {
 
