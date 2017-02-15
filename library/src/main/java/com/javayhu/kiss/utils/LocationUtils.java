@@ -19,7 +19,7 @@ import java.util.Locale;
 /**
  *
  * author: Blankj & Javayhu
- * original: https://github.com/Blankj/AndroidUtilCode
+ * github: https://github.com/Blankj/AndroidUtilCode
  * time  : 16/11/13
  * desc  : 定位相关工具类
  *

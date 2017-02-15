@@ -15,7 +15,7 @@ import java.util.concurrent.TimeoutException;
 /**
  *
  * author: Blankj & Javayhu
- * original: https://github.com/Blankj/AndroidUtilCode
+ * github: https://github.com/Blankj/AndroidUtilCode
  * time  : 2016/8/25
  * desc  : 线程池相关工具类
  *

@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 /**
  *
  * author: Blankj & Javayhu
- * original: https://github.com/Blankj/AndroidUtilCode
+ * github: https://github.com/Blankj/AndroidUtilCode
  * time  : 2016/8/2
  * desc  : 尺寸相关工具类
  *

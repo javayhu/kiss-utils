@@ -8,7 +8,7 @@ import android.widget.Toast;
 /**
  *
  * author: Blankj & Javayhu
- * original: https://github.com/Blankj/AndroidUtilCode
+ * github: https://github.com/Blankj/AndroidUtilCode
  * time  : 2016/9/29
  * desc  : 吐司相关工具类
  *

@@ -14,7 +14,7 @@ import java.util.Locale;
 /**
  *
  * author: Blankj & Javayhu
- * original: https://github.com/Blankj/AndroidUtilCode
+ * github: https://github.com/Blankj/AndroidUtilCode
  * time  : 2016/9/21
  * desc  : 日志相关工具类
  *

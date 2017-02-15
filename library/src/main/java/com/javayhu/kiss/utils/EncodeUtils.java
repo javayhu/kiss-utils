@@ -11,7 +11,7 @@ import java.net.URLEncoder;
 /**
  *
  * author: Blankj & Javayhu
- * original: https://github.com/Blankj/AndroidUtilCode
+ * github: https://github.com/Blankj/AndroidUtilCode
  * time  : 2016/8/7
  * desc  : 编码解码相关工具类
  *
