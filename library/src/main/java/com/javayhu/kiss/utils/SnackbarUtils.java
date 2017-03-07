@@ -2,6 +2,9 @@ package com.javayhu.kiss.utils;
 
 import android.support.annotation.ColorInt;
 import android.support.design.widget.Snackbar;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,32 +27,6 @@ public class SnackbarUtils {
     }
 
     private static WeakReference<Snackbar> snackbarWeakReference;
-
-    public static void showShortSnackbar(View rootView, CharSequence text) {
-        if (null != rootView) {
-            showSnackbar(rootView, text, Snackbar.LENGTH_SHORT);
-        }
-    }
-
-    public static void showLongSnackbar(View rootView, CharSequence text) {
-        if (null != rootView) {
-            showSnackbar(rootView, text, Snackbar.LENGTH_LONG);
-        }
-    }
-
-    /**
-     * 设置snackbar (简易版)
-     *
-     * @param parent          父视图(CoordinatorLayout或者DecorView)
-     * @param text            文本
-     * @param duration        显示时长
-     */
-    private static void showSnackbar(View parent, CharSequence text, int duration) {
-        if (parent==null) return;
-        snackbarWeakReference = new WeakReference<>(Snackbar.make(parent, text, duration));
-        Snackbar snackbar = snackbarWeakReference.get();
-        snackbar.show();
-    }
 
     /**
      * 显示短时snackbar
@@ -150,13 +127,17 @@ public class SnackbarUtils {
      * @param actionTextColor 事件文本颜色
      * @param listener        监听器
      */
-    private static void showSnackbar(View parent, CharSequence text, int duration, @ColorInt int textColor, @ColorInt int bgColor,
-                                     CharSequence actionText, int actionTextColor, View.OnClickListener listener) {
-        if (parent==null) return;
-        snackbarWeakReference = new WeakReference<>(Snackbar.make(parent, text, duration));
+    private static void showSnackbar(View parent, CharSequence text,
+                                     int duration,
+                                     @ColorInt int textColor, @ColorInt int bgColor,
+                                     CharSequence actionText, int actionTextColor,
+                                     View.OnClickListener listener) {
+        SpannableString spannableString = new SpannableString(text);
+        ForegroundColorSpan colorSpan = new ForegroundColorSpan(textColor);
+        spannableString.setSpan(colorSpan, 0, spannableString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        snackbarWeakReference = new WeakReference<>(Snackbar.make(parent, spannableString, duration));
         Snackbar snackbar = snackbarWeakReference.get();
         View view = snackbar.getView();
-        snackbar.setActionTextColor(textColor);
         view.setBackgroundColor(bgColor);
         if (actionText != null && actionText.length() > 0 && listener != null) {
             snackbar.setActionTextColor(actionTextColor);
@@ -179,7 +160,8 @@ public class SnackbarUtils {
             Snackbar.SnackbarLayout layout = (Snackbar.SnackbarLayout) view;
             View child = LayoutInflater.from(view.getContext()).inflate(layoutId, null);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT);
             params.gravity = Gravity.CENTER_VERTICAL;
             layout.addView(child, index, params);
         }

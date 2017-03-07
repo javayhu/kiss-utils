@@ -15,17 +15,14 @@ import java.util.Date;
 import java.util.Locale;
 
 /**
- *
  * author: Blankj & Javayhu
  * github: https://github.com/Blankj/AndroidUtilCode
  * time  : 2016/9/27
  * desc  : 崩溃相关工具类
- *
  */
-public class CrashUtils implements UncaughtExceptionHandler {
+public class CrashUtils implements Thread.UncaughtExceptionHandler {
 
     private volatile static CrashUtils mInstance;
-
     private UncaughtExceptionHandler mHandler;
 
     private boolean mInitialized;
@@ -38,7 +35,7 @@ public class CrashUtils implements UncaughtExceptionHandler {
 
     /**
      * 获取单例
-     * <p>在Application中初始化{@code CrashUtils.getInstance().init();}</p>
+     * <p>在Application中初始化{@code CrashUtils.getInstance().init(this);}</p>
      * <p>需添加权限 {@code <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>}</p>
      *
      * @return 单例
@@ -64,11 +61,11 @@ public class CrashUtils implements UncaughtExceptionHandler {
         if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
             File baseCache = Utils.getContext().getExternalCacheDir();
             if (baseCache == null) return false;
-            crashDir = baseCache.getPath() + File.separator + "crash";
+            crashDir = baseCache.getPath() + File.separator + "crash" + File.separator;
         } else {
             File baseCache = Utils.getContext().getCacheDir();
             if (baseCache == null) return false;
-            crashDir = baseCache.getPath() + File.separator + "crash";
+            crashDir = baseCache.getPath() + File.separator + "crash" + File.separator;
         }
         try {
             PackageInfo pi = Utils.getContext().getPackageManager().getPackageInfo(Utils.getContext().getPackageName(), 0);
@@ -86,8 +83,10 @@ public class CrashUtils implements UncaughtExceptionHandler {
     @Override
     public void uncaughtException(Thread thread, final Throwable throwable) {
         String now = new SimpleDateFormat("yy-MM-dd HH:mm:ss", Locale.getDefault()).format(new Date());
-        final String fullPath = crashDir + File.separator + now + ".txt";
-        if (!FileUtils.createOrExistsFile(fullPath)) return;
+        final String fullPath = crashDir + now + ".txt";
+        if (!createOrExistsFile(fullPath)) return;
+
+        //打印堆栈信息到crash日志文件中
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -128,5 +127,36 @@ public class CrashUtils implements UncaughtExceptionHandler {
                 "\nApp VersionName    : " + versionName +
                 "\nApp VersionCode    : " + versionCode +
                 "\n************* Crash Log Head ****************\n\n";
+    }
+
+    /**
+     * 判断文件是否存在，不存在则判断是否创建成功
+     *
+     * @param filePath 文件路径
+     * @return {@code true}: 存在或创建成功<br>{@code false}: 不存在或创建失败
+     */
+    private static boolean createOrExistsFile(String filePath) {
+        File file = new File(filePath);
+        // 如果存在，是文件则返回true，是目录则返回false
+        if (file.exists()) return file.isFile();
+        if (!createOrExistsDir(file.getParentFile())) return false;
+        try {
+            return file.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
+    /**
+     * 判断目录是否存在，不存在则判断是否创建成功
+     *
+     * @param file 文件
+     * @return {@code true}: 存在或创建成功<br>{@code false}: 不存在或创建失败
+     */
+    private static boolean createOrExistsDir(File file) {
+        // 如果存在，是目录则返回true，是文件则返回false，不存在则返回是否创建成功
+        return file != null && (file.exists() ? file.isDirectory() : file.mkdirs());
     }
 }
