@@ -19,7 +19,7 @@ import java.lang.reflect.Method;
 /**
  *
  * author: Blankj & Javayhu
- * original: https://github.com/Blankj/AndroidUtilCode
+ * github: https://github.com/Blankj/AndroidUtilCode
  * time  : 2016/9/23
  * desc  : 栏相关工具类
  *

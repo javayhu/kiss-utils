@@ -6,7 +6,7 @@ import java.io.IOException;
 /**
  *
  * author: Blankj & Javayhu
- * original: https://github.com/Blankj/AndroidUtilCode
+ * github: https://github.com/Blankj/AndroidUtilCode
  * time  : 2016/10/9
  * desc  : 关闭相关工具类
  *

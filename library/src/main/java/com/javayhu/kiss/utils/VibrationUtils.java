@@ -6,7 +6,7 @@ import android.os.Vibrator;
 /**
  *
  * author: Blankj & Javayhu
- * original: https://github.com/Blankj/AndroidUtilCode
+ * github: https://github.com/Blankj/AndroidUtilCode
  * time  : 2016/9/29
  * desc  : 震动相关工具类
  *

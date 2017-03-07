@@ -18,7 +18,7 @@ import java.util.List;
 /**
  *
  * author: Blankj & Javayhu
- * original: https://github.com/Blankj/AndroidUtilCode
+ * github: https://github.com/Blankj/AndroidUtilCode
  * time  : 2017/1/17
  * desc  : Fragment相关工具类
  *
@@ -368,8 +368,8 @@ public class FragmentUtils {
     /**
      * 获取栈中最后加入的fragment
      *
-     * @param fragmentManager
-     * @return
+     * @param fragmentManager fragment管理器
+     * @return 栈中最后加入的fragment
      */
     public static Fragment getLastAddFragmentInStack(@NonNull FragmentManager fragmentManager) {
         List<Fragment> fragments = getFragments(fragmentManager);

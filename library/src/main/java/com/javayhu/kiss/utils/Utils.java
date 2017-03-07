@@ -5,7 +5,7 @@ import android.content.Context;
 /**
  *
  * author: Blankj & Javayhu
- * original: https://github.com/Blankj/AndroidUtilCode
+ * github: https://github.com/Blankj/AndroidUtilCode
  * time  : 16/12/08
  * desc  : Utils初始化相关
  *

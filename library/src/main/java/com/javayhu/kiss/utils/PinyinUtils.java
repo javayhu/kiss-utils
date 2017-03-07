@@ -5,7 +5,7 @@ import android.support.v4.util.SimpleArrayMap;
 /**
  *
  * author: Blankj & Javayhu
- * original: https://github.com/Blankj/AndroidUtilCode
+ * github: https://github.com/Blankj/AndroidUtilCode
  * time  : 16/11/16
  * desc  : 拼音相关工具类
  *

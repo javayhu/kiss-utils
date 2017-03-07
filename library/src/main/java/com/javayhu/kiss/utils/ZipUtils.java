@@ -22,7 +22,7 @@ import static com.javayhu.kiss.utils.ConstUtils.KB;
 /**
  *
  * author: Blankj & Javayhu
- * original: https://github.com/Blankj/AndroidUtilCode
+ * github: https://github.com/Blankj/AndroidUtilCode
  * time  : 2016/8/27
  * desc  : 压缩相关工具类
  *

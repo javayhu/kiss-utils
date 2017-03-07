@@ -22,7 +22,7 @@ import java.util.concurrent.Future;
 /**
  *
  * author: Blankj & Javayhu
- * original: https://github.com/Blankj/AndroidUtilCode
+ * github: https://github.com/Blankj/AndroidUtilCode
  * time  : 2016/8/2
  * desc  : 网络相关工具类
  *

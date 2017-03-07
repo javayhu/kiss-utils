@@ -25,7 +25,7 @@ import java.util.List;
 /**
  *
  * author: Blankj & Javayhu
- * original: https://github.com/Blankj/AndroidUtilCode
+ * github: https://github.com/Blankj/AndroidUtilCode
  * time  : 2016/8/11
  * desc  : 文件相关工具类
  *

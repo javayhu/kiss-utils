@@ -8,7 +8,7 @@ import java.lang.ref.WeakReference;
 /**
  *
  * author: Blankj & Javayhu
- * original: https://github.com/Blankj/AndroidUtilCode
+ * github: https://github.com/Blankj/AndroidUtilCode
  * time  : 16/11/01
  * desc  : Handler相关工具类
  *

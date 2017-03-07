@@ -15,7 +15,7 @@ import android.view.WindowManager;
 /**
  *
  * author: Blankj & Javayhu
- * original: https://github.com/Blankj/AndroidUtilCode
+ * github: https://github.com/Blankj/AndroidUtilCode
  * time  : 2016/8/2
  * desc  : 屏幕相关工具类
  *

@@ -16,7 +16,7 @@ import java.util.Map;
 /**
  *
  * author: Blankj & Javayhu
- * original: https://github.com/Blankj/AndroidUtilCode
+ * github: https://github.com/Blankj/AndroidUtilCode
  * time  : 2016/9/23
  * desc  : Activity相关工具类
  *

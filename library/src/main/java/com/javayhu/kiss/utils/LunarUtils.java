@@ -3,7 +3,7 @@ package com.javayhu.kiss.utils;
 /**
  *
  * author: Blankj & Javayhu
- * original: https://github.com/Blankj/AndroidUtilCode
+ * github: https://github.com/Blankj/AndroidUtilCode
  * time  : 2016/12/5
  * desc  : 阴历相关工具类
  *

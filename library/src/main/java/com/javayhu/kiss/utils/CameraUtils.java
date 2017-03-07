@@ -15,7 +15,7 @@ import java.io.IOException;
 /**
  *
  * author: Blankj & Javayhu
- * original: https://github.com/Blankj/AndroidUtilCode
+ * github: https://github.com/Blankj/AndroidUtilCode
  * time  : 2016/9/19
  * desc  : 相机相关工具类
  *
