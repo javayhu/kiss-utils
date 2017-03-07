@@ -4,9 +4,11 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.content.pm.Signature;
 import android.graphics.drawable.Drawable;
 
@@ -15,12 +17,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
  * author: Blankj & Javayhu
  * github: https://github.com/Blankj/AndroidUtilCode
  * time  : 2016/8/2
  * desc  : App相关工具类
- *
  */
 public class AppUtils {
 
@@ -487,7 +487,6 @@ public class AppUtils {
      * <p>当不是查看当前App，且SDK大于21时，
      * 需添加权限 {@code <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"/>}</p>
      *
-     * @param context     上下文
      * @param packageName 包名
      * @return {@code true}: 是<br>{@code false}: 否
      */
@@ -586,6 +585,8 @@ public class AppUtils {
 
         @Override
         public String toString() {
+            //return "App包名：" + getPackageName() + "  App名称：" + getName();
+
             return "App包名：" + getPackageName() +
                     "\nApp名称：" + getName() +
                     "\nApp图标：" + getIcon() +
@@ -619,7 +620,7 @@ public class AppUtils {
         try {
             PackageManager pm = context.getPackageManager();
             PackageInfo pi = pm.getPackageInfo(packageName, 0);
-            return getBean(pm, pi);
+            return getAppInfo(pm, pi);
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
             return null;
@@ -627,13 +628,13 @@ public class AppUtils {
     }
 
     /**
-     * 得到AppInfo的Bean
+     * 得到AppInfo
      *
      * @param pm 包的管理
      * @param pi 包的信息
      * @return AppInfo类
      */
-    private static AppInfo getBean(PackageManager pm, PackageInfo pi) {
+    private static AppInfo getAppInfo(PackageManager pm, PackageInfo pi) {
         if (pm == null || pi == null) return null;
         ApplicationInfo ai = pi.applicationInfo;
         String packageName = pi.packageName;
@@ -648,19 +649,39 @@ public class AppUtils {
 
     /**
      * 获取所有已安装App信息
-     * <p>{@link #getBean(PackageManager, PackageInfo)}（名称，图标，包名，包路径，版本号，版本Code，是否系统应用）</p>
+     * <p>{@link #getAppInfo(PackageManager, PackageInfo)}（名称，图标，包名，包路径，版本号，版本Code，是否系统应用）</p>
      * <p>依赖上面的getBean方法</p>
      *
      * @param context 上下文
      * @return 所有已安装的AppInfo列表
      */
-    public static List<AppInfo> getAppsInfo(Context context) {
+    public static List<AppInfo> listAppInfos(Context context) {
         List<AppInfo> list = new ArrayList<>();
         PackageManager pm = context.getPackageManager();
-        // 获取系统中安装的所有软件信息
-        List<PackageInfo> installedPackages = pm.getInstalledPackages(0);
+        List<PackageInfo> installedPackages = pm.getInstalledPackages(0);// 获取系统中安装的所有软件信息
         for (PackageInfo pi : installedPackages) {
-            AppInfo ai = getBean(pm, pi);
+            AppInfo ai = getAppInfo(pm, pi);
+            if (ai == null) continue;
+            list.add(ai);
+        }
+        return list;
+    }
+
+    /**
+     * 获取安装的app信息
+     * <p>这个方法有别于上面的方法，上面的方法是所有的应用，这个方法是有启动入口的应用</p>
+     *
+     * @param context 上下文
+     * @return appInfo列表
+     */
+    public static List<AppInfo> listAppLaunchers(Context context) {
+        List<AppInfo> list = new ArrayList<>();
+        Intent intent = new Intent(Intent.ACTION_MAIN, null);
+        intent.addCategory(Intent.CATEGORY_LAUNCHER);
+        PackageManager pm = context.getPackageManager();
+        List<ResolveInfo> resolveInfos = pm.queryIntentActivities(intent, 0);
+        for (ResolveInfo resolveInfo : resolveInfos) {
+            AppInfo ai = getAppInfo(context, resolveInfo.activityInfo.packageName);
             if (ai == null) continue;
             list.add(ai);
         }

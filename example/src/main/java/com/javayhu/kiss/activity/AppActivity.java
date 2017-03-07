@@ -8,6 +8,8 @@ import android.widget.TextView;
 import com.javayhu.kiss.R;
 import com.javayhu.kiss.utils.AppUtils;
 
+import java.util.List;
+
 
 /**
  * <pre>
@@ -48,6 +50,18 @@ public class AppActivity extends Activity
                 + "\nisAppForeground: " + AppUtils.isAppForeground(this)
                 + "\nisWeiXinForeground: " + AppUtils.isAppForeground("com.tencent.mm")
         );
+
+        List<AppUtils.AppInfo> list = AppUtils.listAppInfos(this);
+        System.out.println(String.format("total app info size = " + list.size()));//272
+        for (AppUtils.AppInfo appInfo : list) {
+            System.out.println(appInfo.toString());
+        }
+
+        list = AppUtils.listAppLaunchers(this);
+        System.out.println(String.format("total app launcher size = " + list.size()));//272
+        for (AppUtils.AppInfo appInfo : list) {
+            System.out.println(appInfo.toString());
+        }
     }
 
     @Override
